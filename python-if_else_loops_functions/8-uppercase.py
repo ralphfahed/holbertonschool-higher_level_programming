@@ -8,3 +8,6 @@ def to_uppercase(str):
         else:
             result += c
     return result
+
+print("Converted String: {}".format(uppercased_string))
+print("Number of occurrences of '{}' is: {}".format(pattern, occurrences))
