@@ -1,17 +1,15 @@
 #!/usr/bin/python3
 
-#print from 1 to 100 separeted by a space
-#for numbers which are multiples of both three and five print FizzBuzz
 def fizzbuzz():
-    for i in range(1, 100):
+    for i in range(1, 101):  # Range should be from 1 to 100 (inclusive)
         if i % 3 == 0 and i % 5 == 0:
-            print("FizzBuzz", end=" ")  # First check for both 3 and 5
+            print("FizzBuzz", end=" ")
         elif i % 3 == 0:
-            print("Fizz", end=" ")  # Then check for multiples of 3
+            print("Fizz", end=" ")
         elif i % 5 == 0:
-            print("Buzz", end=" ")  # Then check for multiples of 5
+            print("Buzz", end=" ")
         else:
-            print(i, end=" ")  # Print the number if not divisible by 3 or 5
-    print("$")
+            print(i, end=" ")
+    print()  # Print a newline at the end
 
 fizzbuzz()
