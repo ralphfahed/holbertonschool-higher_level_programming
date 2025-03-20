@@ -12,3 +12,6 @@ def fizzbuzz():
             print("Buzz", end=" ")  # Then check for multiples of 5
         else:
             print(i, end=" ")  # Print the number if not divisible by 3 or 5
+    print("$")
+
+fizzbuzz()
