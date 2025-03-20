@@ -10,6 +10,5 @@ def fizzbuzz():
             print("Buzz", end=" ")
         else:
             print(i, end=" ")
-    print()  # Print a newline at the end
-
+    print("$")
 fizzbuzz()
