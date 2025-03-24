@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# Ma sta3malna .remove la2no hone a string
+
 def no_c(my_string):
     new_string = ""  # create a new empty string
     for i in my_string:  # loop in the string
