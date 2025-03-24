@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 
 def multiple_returns(sentence):
-    if sentence == []:
-        return None
+    if not sentence:  # Check if the string is empty
+        return 0, None  # Return 0 for length and None for the first character
     else:
         length = len(sentence)
         first = sentence[0]
-        print("Length: {:d} - First character: {}".format(length, first))
+        return length, first
+
