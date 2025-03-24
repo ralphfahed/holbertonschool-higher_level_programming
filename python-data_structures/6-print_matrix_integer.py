@@ -4,5 +4,5 @@
 def print_matrix_integer(matrix=[[]]):
     for row in matrix:  # loop bi 2aleb kel row
         for element in row:  # loop bel elemetns li bel row
-            print("{}".format(element), end=" ")  # Print the element with a space
+            print("{:d}".format(element), end=" ")  # Print the element with a space
         print()  # Print a new line after each row
