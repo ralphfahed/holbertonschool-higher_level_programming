@@ -5,8 +5,8 @@ def uniq_add(my_list=[]):
     result = 0  # To store the sum
     
     for i in my_list:
-        if i not in unique_values:  # If 'i' is not already in the list of unique values
-            unique_values.append(i)  # Add 'i' to the unique values list
+        if i not in unique_values:  # If i is not already in the newlist
+            unique_values.append(i)  # Add 'i' to the  newlist
             result += i  # Add 'i' to the total sum
     
     return result
