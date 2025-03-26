@@ -7,3 +7,5 @@ def safe_print_integer(value):
     except (ValueError, TypeEror):
         print("{} is not an integer".format(value))
         return False
+    finaly:
+        print("")
