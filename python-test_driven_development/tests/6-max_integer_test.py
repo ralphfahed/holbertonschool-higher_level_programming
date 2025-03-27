@@ -22,9 +22,10 @@ class SimpleTest(unittest.TestCase):
     def test_max_integer(self):
         self.assertEqual(max_integer([1, 2, 3, 4]), 4)
         self.assertEqual(max_integer([1, 3, 4, 2]), 4)
-        self.assertEqual(max_integer([-1, -3, -4, -2]), -1)
+        self.assertEqual(max_integer([4, 1, 2, 3]), 4)
         self.assertEqual(max_integer([5]), 5)
-        self.assertEqual(max_integer([]), None)  # Edge case for empty list
-
+        self.assertEqual(max_integer([-1, -2, -3]), -1)
+        self.assertEqual(max_integer([1, 1, 1, 1]), 1)
+        self.assertEqual(max_integer([]), None)
 if __name__ == "__main__":
     unittest.main(verbosity=2)
