@@ -8,29 +8,26 @@ after each of these characters: ., ? and :
 def text_indentation(text):
     """
     Prints a text with 2 new lines after each of these characters: ., ? and :
+
     Args:
         text: The text to print
+
     Raises:
         TypeError: If text is not a string
     """
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    # Remove spaces at the beginning and end of each line
-    text = text.strip()
+    result = ""  # Initialize an empty string
 
-    # Replace special characters with themselves + two newlines
-    for char in ".?:":
-        text = text.replace(char, char + "\n\n")
+    for char in text:  # Loop through each character in text
+        if char == " " and result and result[-1] in ".?:":
+            continue  # Skip space right after ., ?, :
 
-    # Split text into lines and process each line
-    lines = text.split("\n")
-    formatted_lines = []
-    for line in lines:
-        # Remove trailing and leading spaces for each line
-        line = line.strip()
-        if line:  # Only add non-empty lines
-            formatted_lines.append(line)
+        result += char  # Add character to result
 
-    # Join lines with newline and print
-    print("\n".join(formatted_lines), end="")
+        if char in ".?:":
+            result += "\n\n"  # Add two new lines after ., ?, :
+
+    # Ensure the final output includes the correct number of newlines.
+    print(result.strip(), end="\n")
