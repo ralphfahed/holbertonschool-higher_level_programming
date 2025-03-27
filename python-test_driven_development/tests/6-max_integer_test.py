@@ -29,7 +29,7 @@ class TestMaxInteger(unittest.TestCase):
         """Test list with one element"""
         self.assertEqual(max_integer([98]), 98)
 
-    def test_max_at_the_end(self):
+    def max_at_the_end(self):
         """Test max at the end"""
         self.assertEqual(max_integer([1, 2, 3, 4]), 4)
 
