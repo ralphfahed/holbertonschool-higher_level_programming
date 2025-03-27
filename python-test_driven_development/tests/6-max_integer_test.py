@@ -5,7 +5,7 @@ from max_integer_6 import max_integer
 class TestMaxInteger(unittest.TestCase):
     """Test cases for the max_integer function"""
 
-    def list_is_empty(self):
+    def test_list_is_empty(self):
         """Test empty list"""
         self.assertIsNone(max_integer([]))
 
