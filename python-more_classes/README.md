@@ -1,0 +1,2 @@
+classesmethod
+staticmethod
