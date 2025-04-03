@@ -2,6 +2,7 @@
 
 """Module that defines a Rectangle class."""
 
+
 class Rectangle:
     """Class that defines a rectangle with width and height properties."""
 
