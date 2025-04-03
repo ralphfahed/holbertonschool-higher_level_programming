@@ -66,8 +66,10 @@ class Rectangle:
         """Return the string representation of rectangle with # characters."""
         if self.width == 0 or self.height == 0:
             return ""  # If either dimension is zero, return an empty string.
+         # Ensure print_symbol is treated as a string
+        symbol = str(self.print_symbol)
         # Create a row with width number of '#'
-        row = self.print_symbol * self.width
+        row = symbol * self.width
         # Repeat the row 'height' times, and join them with newlines
         return "\n".join([row] * self.height)
 
