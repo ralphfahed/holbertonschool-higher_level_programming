@@ -6,7 +6,6 @@
 class Rectangle:
     """Class that defines a rectangle with width and height properties."""
 
-
     # Public class attribute
     number_of_instances = 0
 
