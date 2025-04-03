@@ -55,7 +55,7 @@ class Rectangle:
         return 2 * (self.width + self.height)
 
     def __str__(self):
-        """Return the string representation of the rectangle with # characters."""
+        """Return the string representation of rectangle with # characters."""
         if self.width == 0 or self.height == 0:
             return ""  # If either dimension is zero, return an empty string.
         
