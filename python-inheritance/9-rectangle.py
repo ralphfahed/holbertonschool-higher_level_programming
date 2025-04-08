@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 '''
 Module: Rectangle Class
-
 This module defines a Rectangle class that inherits from the BaseGeometry class.
 
 The Rectangle class has:
@@ -15,7 +14,25 @@ Classes:
     Rectangle (BaseGeometry): A class that represents a rectangle and its associated operations.
 '''
 
-from 7-base_geometry import BaseGeometry
+class BaseGeometry:
+    ''' BaseGeometry class with the integer_validator method for validation. '''
+
+    def integer_validator(self, name, value):
+        '''
+        Validates the value, ensuring it's a positive integer.
+
+        Args:
+            name (str): The name of the value being validated.
+            value (int): The value to be validated.
+
+        Raises:
+            TypeError: If value is not an integer.
+            ValueError: If value is less than or equal to 0.
+        '''
+        if type(value) is not int:
+            raise TypeError(f"{name} must be an integer")
+        if value <= 0:
+            raise ValueError(f"{name} must be greater than 0")
 
 class Rectangle(BaseGeometry):
     '''
