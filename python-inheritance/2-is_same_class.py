@@ -4,9 +4,10 @@ This module defines a function that checks if an object is exactly an instance
 of a specified class.
 """
 
+
 def is_same_class(obj, a_class):
     """
     Returns True if the object is exactly an instance of the specified class.
     Otherwise, returns False.
     """
-    return isinstance(obj, a_class) and type(obj) == a_class
+    return type(obj) is a_class
