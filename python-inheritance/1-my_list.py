@@ -4,9 +4,10 @@ This module defines the MyList class that inherits from list.
 It includes a method print_sorted() that prints the list in ascending order.
 """
 
+
 class MyList(list):
     """
-    A class that inherits from list and adds a method for printing the sorted list.
+    A class that inherits from list and adds a method for printing sorted list
     """
 
     def print_sorted(self):
@@ -15,4 +16,3 @@ class MyList(list):
         Does not modify the original list.
         """
         print(sorted(self))
-
