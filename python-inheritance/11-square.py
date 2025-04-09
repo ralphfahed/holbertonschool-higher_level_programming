@@ -52,4 +52,3 @@ class Square(Rectangle):
             str: [Square] size/size
         '''
         return f"[Square] {self.__size}/{self.__size}"
-
