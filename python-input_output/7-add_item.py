@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-"""Script that adds all arguments to a Python list and saves them in a JSON file."""
-
+"""Script that adds command line args to a Python list and saves to a JSON file"""
 import sys
-from save_to_json_file import save_to_json_file
-from load_from_json_file import load_from_json_file
+
+# Import functions from other scripts
+from 5_save_to_json_file import save_to_json_file
+from 6_load_from_json_file import load_from_json_file
 
 filename = "add_item.json"
 
