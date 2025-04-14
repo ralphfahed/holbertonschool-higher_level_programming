@@ -39,4 +39,3 @@ class Student:
             dict: Dictionary of the student's attributes.
         """
         return self.__dict__
-
