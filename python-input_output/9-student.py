@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module defines a class Student with attributes and a method 
+This module defines a class Student with attributes and a method
 to return the dictionary description of an instance for JSON serialization.
 """
 
