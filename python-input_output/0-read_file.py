@@ -1,3 +1,5 @@
+"""Module that provides a function to read and print a UTF-8 text file to stdout."""
+
 #!/usr/bin/python3
 # Function that reads a UTF-8 text file and prints its contents to stdout
 
