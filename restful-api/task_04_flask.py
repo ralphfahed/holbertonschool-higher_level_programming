@@ -37,7 +37,7 @@ def get_user(username):
 # Status route
 @app.route('/status')
 def status():
-    return jsonify({"status": "API is up and running!"})
+    return jsonify({"status": "API is up and running!"}), 200  # Make sure the correct status code is returned
 
 # Run the app
 if __name__ == '__main__':
