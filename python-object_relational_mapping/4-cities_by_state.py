@@ -5,7 +5,7 @@ import MySQLdb
 import sys
 
 if __name__ == "__main__":
-    # Get arguments
+    # Extract arguments
     username = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
     cur = db.cursor()
 
-    # Only one execute() call
+    # One execute() call - joining cities with states
     cur.execute("""
         SELECT cities.id, cities.name, states.name
         FROM cities
@@ -29,10 +29,10 @@ if __name__ == "__main__":
         ORDER BY cities.id ASC;
     """)
 
-    rows = cur.fetchall()
-    for row in rows:
+    # Fetch and print results
+    for row in cur.fetchall():
         print(row)
 
-    # Clean up
+    # Close connection
     cur.close()
     db.close()
