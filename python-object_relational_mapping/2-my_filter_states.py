@@ -37,9 +37,12 @@ def filter_states():
             print(row)
 
 
-     # Clean up
-    cur.close()
-    db.close()
+    finally:
+        # Clean up
+        if 'cur' in locals():
+            cur.close()
+        if 'db' in locals():
+            db.close()
 
 
 if __name__ == "__main__":
