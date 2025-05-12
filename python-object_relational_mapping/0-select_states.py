@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """
-Lists all states from the database hbtn_0e_0_usa,
-sorted by states.id in ascending order.
+This script lists all states from the database hbtn_0e_0_usa.
+It takes 3 arguments: MySQL username, password, and database name.
+The script connects to a local MySQL server and retrieves all records
+from the 'states' table, sorted by id in ascending order.
 """
 
 import MySQLdb
@@ -9,26 +11,32 @@ import sys
 
 
 def list_states():
-    """
-    Connects to a MySQL database and prints all states
-    from the 'states' table ordered by id ascending.
-    """
-    conn = MySQLdb.connect(
+    """Connects to the database and lists all states sorted by id ASC"""
+    username = sys.argv[1]
+    password = sys.argv[2]
+    db_name = sys.argv[3]
+
+    # Connect to MySQL server
+    db = MySQLdb.connect(
         host="localhost",
         port=3306,
-        user=sys.argv[1],
-        passwd=sys.argv[2],
-        db=sys.argv[3]
+        user=username,
+        passwd=password,
+        db=db_name
     )
 
-    cur = conn.cursor()
+    # Create cursor and execute query
+    cur = db.cursor()
     cur.execute("SELECT * FROM states ORDER BY id ASC")
 
-    for row in cur.fetchall():
+    # Fetch and print results
+    rows = cur.fetchall()
+    for row in rows:
         print(row)
 
+    # Clean up
     cur.close()
-    conn.close()
+    db.close()
 
 
 if __name__ == "__main__":
