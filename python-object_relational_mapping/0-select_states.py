@@ -16,6 +16,7 @@ def list_states():
     password = sys.argv[2]
     db_name = sys.argv[3]
 
+    try:
     # Connect to MySQL server
     db = MySQLdb.connect(
         host="localhost",
@@ -34,10 +35,12 @@ def list_states():
     for row in rows:
         print(row)
 
-    # Clean up
-    cur.close()
-    db.close()
-
+     finally:
+        # Clean up
+        if 'cur' in locals():
+            cur.close()
+        if 'db' in locals():
+            db.close()
 
 if __name__ == "__main__":
     list_states()
