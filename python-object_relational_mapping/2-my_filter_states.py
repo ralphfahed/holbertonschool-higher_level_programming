@@ -10,10 +10,6 @@ import sys
 
 def filter_states():
     """Displays all values in states table where name matches the argument"""
-    if len(sys.argv) != 5:
-        print("Usage: {} <mysql username> <mysql password> <database name> <state name>".format(sys.argv[0]))
-        sys.exit(1)
-
     username = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
