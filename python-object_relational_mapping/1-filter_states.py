@@ -11,11 +11,12 @@ import sys
 
 def list_states():
     """Connects to the database and lists all states starting with 'N' sorted by id ASC"""
+    # Fetching the arguments
     username = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
 
-    # Connect to MySQL server
+    # Establish the connection to the MySQL server
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
@@ -24,16 +25,20 @@ def list_states():
         db=db_name
     )
 
-    # Create cursor and execute query to filter states starting with 'N'
+    # Create a cursor to interact with the database
     cur = db.cursor()
+
+    # Query to select states starting with 'N'
     cur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
 
-    # Fetch and print results
+    # Fetch all rows from the executed query
     rows = cur.fetchall()
+
+    # Print each row (state)
     for row in rows:
         print(row)
 
-    # Clean up
+    # Clean up by closing the cursor and the database connection
     cur.close()
     db.close()
 
