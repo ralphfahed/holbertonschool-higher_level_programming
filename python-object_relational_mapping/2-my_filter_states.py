@@ -15,7 +15,6 @@ def filter_states():
     db_name = sys.argv[3]
     state_name = sys.argv[4]
 
-    try:
         # Connect to MySQL server
         db = MySQLdb.connect(
             host="localhost",
@@ -35,10 +34,6 @@ def filter_states():
         for row in rows:
             print(row)
 
-    except MySQLdb.Error as e:
-        print("MySQL Error {}: {}".format(e.args[0], e.args[1]))
-        sys.exit(1)
-    finally:
         # Clean up
         if 'cur' in locals():
             cur.close()
