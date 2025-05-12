@@ -1,19 +1,20 @@
 #!/usr/bin/python3
 """
-This script lists all states from the database hbtn_0e_0_usa.
-It takes 4 arguments: MySQL username, password, database name, and state name.
-The script connects to a local MySQL server and retrieves all records
-from the 'states' table, sorted by id in ascending order.
+This script filters states from the database hbtn_0e_0_usa.
+It takes 4 arguments: MySQL username, password, database name, and state name to search for.
+The script connects to a local MySQL server and retrieves all states with a name matching the search name,
+sorted by id in ascending order.
 """
+
 import MySQLdb
 import sys
 
-def search_states():
-    """Connects to the database and lists all states matching the argument, sorted by id ASC"""
+def filter_states():
+    """Connects to the database and filters states based on user input, sorted by id ASC."""
     username = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
-    search_name = sys.argv[4]  # The state name prefix to search for
+    state_name = sys.argv[4]  # The state name to search for
 
     # Connect to MySQL server
     db = MySQLdb.connect(
@@ -24,10 +25,10 @@ def search_states():
         db=db_name
     )
 
-    # Create cursor and execute query to search for states starting with the search_name
+    # Create cursor and execute query to search for states matching the state_name
     cur = db.cursor()
-    query = "SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC"
-    cur.execute(query, (search_name + '%',))  # Add % to the search_name for a wildcard search
+    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(state_name)
+    cur.execute(query)
 
     # Fetch and print results
     rows = cur.fetchall()
@@ -39,5 +40,5 @@ def search_states():
     db.close()
 
 if __name__ == "__main__":
-    search_states()
+    filter_states()
 
