@@ -1,47 +1,48 @@
 #!/usr/bin/python3
 """
-This script lists all states from the database hbtn_0e_0_usa where the name matches the argument.
-It takes 4 arguments: MySQL username, password, database name, and state name.
-The script connects to a local MySQL server and retrieves matching records from the 'states' table,
-sorted by id in ascending order. It uses parameterized queries to prevent SQL injection.
+Script that takes in an argument and displays all values in the states table
+of hbtn_0e_0_usa where name matches the argument, safe from MySQL injection.
 """
 
 import MySQLdb
 import sys
 
-def search_states():
-    """
-    Connects to the database and lists all states matching the state name, sorted by id in ascending order.
-    Uses parameterized queries to prevent SQL injection.
-    """
+
+def safe_filter_states():
+    """Displays all values in states table where name matches the argument safely"""
+
     username = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
-    search_name = sys.argv[4]  # The state name to search for
+    state_name = sys.argv[4]
 
-    # Connect to MySQL server
-    db = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=username,
-        passwd=password,
-        db=db_name
-    )
+    try:
+        # Connect to MySQL server
+        db = MySQLdb.connect(
+            host="localhost",
+            port=3306,
+            user=username,
+            passwd=password,
+            db=db_name
+        )
 
-    # Create cursor and execute parameterized query to search for the exact state name
-    cur = db.cursor()
-    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
-    cur.execute(query, (search_name,))  # The parameter is passed safely using tuple
+        # Create cursor and execute query using parameterized query
+        cur = db.cursor()
+        query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
+        cur.execute(query, (state_name,))
 
-    # Fetch and print results
-    rows = cur.fetchall()
-    for row in rows:
-        print(row)
+        # Fetch and print results
+        rows = cur.fetchall()
+        for row in rows:
+            print(row)
 
-    # Clean up
-    cur.close()
-    db.close()
+    finally:
+        # Clean up
+        if 'cur' in locals():
+            cur.close()
+        if 'db' in locals():
+            db.close()
+
 
 if __name__ == "__main__":
-    search_states()
-
+    safe_filter_states()
