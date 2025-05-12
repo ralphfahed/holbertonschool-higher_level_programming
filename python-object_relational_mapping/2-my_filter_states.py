@@ -1,44 +1,54 @@
 #!/usr/bin/python3
 """
-This script filters states from the database hbtn_0e_0_usa.
-It takes 4 arguments: MySQL username, password, database name, and state name to search for.
-The script connects to a local MySQL server and retrieves all states with a name matching the search name,
-sorted by id in ascending order.
+Script that takes in an argument and displays all values in the states table
+of hbtn_0e_0_usa where name matches the argument.
 """
 
 import MySQLdb
 import sys
 
+
 def filter_states():
-    """Connects to the database and filters states based on user input, sorted by id ASC."""
+    """Displays all values in states table where name matches the argument"""
+    if len(sys.argv) != 5:
+        print("Usage: {} <mysql username> <mysql password> <database name> <state name>".format(sys.argv[0]))
+        sys.exit(1)
+
     username = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
-    state_name = sys.argv[4]  # The state name to search for
+    state_name = sys.argv[4]
 
-    # Connect to MySQL server
-    db = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=username,
-        passwd=password,
-        db=db_name
-    )
+    try:
+        # Connect to MySQL server
+        db = MySQLdb.connect(
+            host="localhost",
+            port=3306,
+            user=username,
+            passwd=password,
+            db=db_name
+        )
 
-    # Create cursor and execute query to search for states matching the state_name
-    cur = db.cursor()
-    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(state_name)
-    cur.execute(query)
+        # Create cursor and execute query
+        cur = db.cursor()
+        query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(state_name)
+        cur.execute(query)
 
-    # Fetch and print results
-    rows = cur.fetchall()
-    for row in rows:
-        print(row)
+        # Fetch and print results
+        rows = cur.fetchall()
+        for row in rows:
+            print(row)
 
-    # Clean up
-    cur.close()
-    db.close()
+    except MySQLdb.Error as e:
+        print("MySQL Error {}: {}".format(e.args[0], e.args[1]))
+        sys.exit(1)
+    finally:
+        # Clean up
+        if 'cur' in locals():
+            cur.close()
+        if 'db' in locals():
+            db.close()
+
 
 if __name__ == "__main__":
     filter_states()
-
