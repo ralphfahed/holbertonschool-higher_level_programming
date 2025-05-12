@@ -1,16 +1,13 @@
 #!/usr/bin/python3
-"""
-This script lists all states from the database hbtn_0e_0_usa.
-It takes 3 arguments: MySQL username, password, and database name.
-The script connects to a local MySQL server and retrieves all records
-from the 'states' table, sorted by id in ascending order.
-"""
+"""Lists all cities from the database hbtn_0e_4_usa"""
 
 import MySQLdb
 import sys
 
+if __name__ == "__main__":
 
-def list_states():
+    # Connect to MySQL server
+    def list_states():
     """Connects to the database and lists all states sorted by id ASC"""
     username = sys.argv[1]
     password = sys.argv[2]
@@ -37,6 +34,3 @@ def list_states():
      # Clean up
     cur.close()
     db.close()
-
-if __name__ == "__main__":
-    list_states()
