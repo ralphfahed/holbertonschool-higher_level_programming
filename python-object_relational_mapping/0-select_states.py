@@ -11,7 +11,7 @@ if __name__ == "__main__":
     db_name = sys.argv[3]
 
     # Connect to MySQL database
-    conn = MySQLdb.connect(
+    db = MySQLdb.connect(
         host="localhost",
         port=3306,
         user=username,
@@ -20,7 +20,7 @@ if __name__ == "__main__":
     )
 
     # Create a cursor object
-    cur = conn.cursor()
+    cur = db.cursor()
 
     # Execute query to select all states ordered by id
     cur.execute("SELECT * FROM states ORDER BY id ASC")
@@ -34,4 +34,4 @@ if __name__ == "__main__":
 
     # Close cursor and database connection
     cur.close()
-    conn.close()
+    db.close()
