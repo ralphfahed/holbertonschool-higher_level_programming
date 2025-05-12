@@ -10,11 +10,13 @@ import sys
 
 def filter_states():
     """Displays all values in states table where name matches the argument"""
+
     username = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
     state_name = sys.argv[4]
 
+    try:
         # Connect to MySQL server
         db = MySQLdb.connect(
             host="localhost",
@@ -34,9 +36,14 @@ def filter_states():
         for row in rows:
             print(row)
 
-  # Clean up
-    cur.close()
-    db.close()
+
+    finally:
+        # Clean up
+        if 'cur' in locals():
+            cur.close()
+        if 'db' in locals():
+            db.close()
+
 
 if __name__ == "__main__":
     filter_states()
