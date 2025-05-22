@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Items List</title>
+</head>
+<body>
+    <h1>Items List</h1>
+
+    {# Check if the list 'items' is not empty #}
+    {% if items %}
+        <ul>
+            {# Loop through each item in the list 'items' #}
+            {% for item in items %}
+                {# Display the current item #}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    {# If the list is empty, show a message #}
+    {% else %}
+        <p>No items found</p>
+    {% endif %}
+
+</body>
+</html>
+
