@@ -44,4 +44,6 @@ def products():
             error = "Invalid ID"
 
     return render_template('product_display.html', products=data, error=error)
+if __name__ == "__main__":
+    app.run()
 
